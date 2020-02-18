@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "SystemCapture.h"
+#import "VideoEncoder.h"
+#import "VideoDecoder.h"
 
 @interface ViewController ()
 

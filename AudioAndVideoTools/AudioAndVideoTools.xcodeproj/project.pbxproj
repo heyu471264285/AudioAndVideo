@@ -13,6 +13,11 @@
 		042B899C23FBB1F6006965F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042B899B23FBB1F6006965F4 /* Assets.xcassets */; };
 		042B899F23FBB1F6006965F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042B899D23FBB1F6006965F4 /* LaunchScreen.storyboard */; };
 		042B89A223FBB1F6006965F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B89A123FBB1F6006965F4 /* main.m */; };
+		042B89AB23FBB367006965F4 /* CaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B89AA23FBB367006965F4 /* CaptureManager.m */; };
+		042B89AE23FBB3DD006965F4 /* SystemCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B89AD23FBB3DD006965F4 /* SystemCapture.m */; };
+		042B89B523FBBE78006965F4 /* AVConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B89B423FBBE78006965F4 /* AVConfig.m */; };
+		042B89B823FBBF2B006965F4 /* VideoEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B89B723FBBF2B006965F4 /* VideoEncoder.m */; };
+		042B89BB23FBD682006965F4 /* VideoDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B89BA23FBD682006965F4 /* VideoDecoder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,16 @@
 		042B899E23FBB1F6006965F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		042B89A023FBB1F6006965F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		042B89A123FBB1F6006965F4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		042B89A923FBB367006965F4 /* CaptureManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptureManager.h; sourceTree = "<group>"; };
+		042B89AA23FBB367006965F4 /* CaptureManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptureManager.m; sourceTree = "<group>"; };
+		042B89AC23FBB3DD006965F4 /* SystemCapture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemCapture.h; sourceTree = "<group>"; };
+		042B89AD23FBB3DD006965F4 /* SystemCapture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemCapture.m; sourceTree = "<group>"; };
+		042B89B323FBBE78006965F4 /* AVConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVConfig.h; sourceTree = "<group>"; };
+		042B89B423FBBE78006965F4 /* AVConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVConfig.m; sourceTree = "<group>"; };
+		042B89B623FBBF2B006965F4 /* VideoEncoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoEncoder.h; sourceTree = "<group>"; };
+		042B89B723FBBF2B006965F4 /* VideoEncoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoEncoder.m; sourceTree = "<group>"; };
+		042B89B923FBD682006965F4 /* VideoDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoDecoder.h; sourceTree = "<group>"; };
+		042B89BA23FBD682006965F4 /* VideoDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoDecoder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +73,8 @@
 		042B898E23FBB1F2006965F4 /* AudioAndVideoTools */ = {
 			isa = PBXGroup;
 			children = (
+				042B89AF23FBBDA1006965F4 /* AVCoder */,
+				042B89A823FBB340006965F4 /* Capture */,
 				042B898F23FBB1F2006965F4 /* AppDelegate.h */,
 				042B899023FBB1F2006965F4 /* AppDelegate.m */,
 				042B899523FBB1F2006965F4 /* ViewController.h */,
@@ -69,6 +86,30 @@
 				042B89A123FBB1F6006965F4 /* main.m */,
 			);
 			path = AudioAndVideoTools;
+			sourceTree = "<group>";
+		};
+		042B89A823FBB340006965F4 /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				042B89A923FBB367006965F4 /* CaptureManager.h */,
+				042B89AA23FBB367006965F4 /* CaptureManager.m */,
+				042B89AC23FBB3DD006965F4 /* SystemCapture.h */,
+				042B89AD23FBB3DD006965F4 /* SystemCapture.m */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
+		042B89AF23FBBDA1006965F4 /* AVCoder */ = {
+			isa = PBXGroup;
+			children = (
+				042B89B323FBBE78006965F4 /* AVConfig.h */,
+				042B89B423FBBE78006965F4 /* AVConfig.m */,
+				042B89B623FBBF2B006965F4 /* VideoEncoder.h */,
+				042B89B723FBBF2B006965F4 /* VideoEncoder.m */,
+				042B89B923FBD682006965F4 /* VideoDecoder.h */,
+				042B89BA23FBD682006965F4 /* VideoDecoder.m */,
+			);
+			path = AVCoder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,9 +182,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042B89B523FBBE78006965F4 /* AVConfig.m in Sources */,
 				042B899723FBB1F2006965F4 /* ViewController.m in Sources */,
 				042B899123FBB1F2006965F4 /* AppDelegate.m in Sources */,
+				042B89AB23FBB367006965F4 /* CaptureManager.m in Sources */,
 				042B89A223FBB1F6006965F4 /* main.m in Sources */,
+				042B89B823FBBF2B006965F4 /* VideoEncoder.m in Sources */,
+				042B89BB23FBD682006965F4 /* VideoDecoder.m in Sources */,
+				042B89AE23FBB3DD006965F4 /* SystemCapture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +330,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EGHNPZVBD8;
 				INFOPLIST_FILE = AudioAndVideoTools/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -291,7 +338,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = hey.AudioAndVideoTools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -300,6 +347,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EGHNPZVBD8;
 				INFOPLIST_FILE = AudioAndVideoTools/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -307,7 +355,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = hey.AudioAndVideoTools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
