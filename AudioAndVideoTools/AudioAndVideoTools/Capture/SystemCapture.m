@@ -48,35 +48,13 @@
        SystemCaptureType capture;
 }
 
-- (instancetype)initWithType:(SystemCaptureType)type
-{
+- (instancetype)initWithType:(SystemCaptureType)type {
     self = [super init];
-       if (self) {
-           capture = type;
-       }
-       return self;
-}
-
-#pragma mark-懒加载
-- (AVCaptureSession *)captureSession{
-    if (!_captureSession) {
-        _captureSession = [[AVCaptureSession alloc] init];
+    if (self) {
+        capture = type;
     }
-    return _captureSession;
+    return self;
 }
-- (dispatch_queue_t)captureQueue{
-    if (!_captureQueue) {
-        _captureQueue = dispatch_queue_create("TMCapture Queue", NULL);
-    }
-    return _captureQueue;
-}
-- (UIView *)preview{
-    if (!_preView) {
-        _preView = [[UIView alloc] init];
-    }
-    return _preView;
-}
-
 
 //准备捕获
 - (void)prepare {
@@ -96,16 +74,13 @@
     }
 }
 
-#pragma mark - 控制开始/结束/切换摄像头
-//开始捕获
+#pragma mark - Control start/stop capture or change camera
 - (void)start{
     if (!self.isRunning) {
         self.isRunning = YES;
         [self.captureSession startRunning];
     }
 }
-
-//结束捕获
 - (void)stop{
     if (self.isRunning) {
         self.isRunning = NO;
@@ -114,11 +89,10 @@
     
 }
 
-//切换摄像头
 - (void)changeCamera{
     [self switchCamera];
 }
-//切换摄像头
+
 -(void)switchCamera{
     [self.captureSession beginConfiguration];
     [self.captureSession removeInput:self.videoInputDevice];
@@ -131,8 +105,7 @@
     [self.captureSession commitConfiguration];
 }
 
-#pragma mark-配置音频/视频设被
-//配置音频设被
+#pragma mark-init Audio/video
 - (void)setupAudio{
     //麦克风设备
     AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
@@ -150,11 +123,10 @@
         [self.captureSession addOutput:self.audioDataOutput];
     }
     [self.captureSession commitConfiguration];
-    //音频连接
+    
     self.audioConnection = [self.audioDataOutput connectionWithMediaType:AVMediaTypeAudio];
 }
 
-//配置音频/视频设被
 - (void)setupVideo{
     //所有video设备
     NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
@@ -195,7 +167,7 @@
      FPS是测量用于保存、显示动态视频的信息数量。每秒钟帧数愈多，所显示的动作就会越流畅。通常，要避免动作不流畅的最低是30。某些计算机视频格式，每秒只能提供15帧。
      
      */
-    [self updateFps:30];
+    [self updateFps:25];
     //设置预览
     [self setupPreviewLayer];
 }
@@ -214,7 +186,6 @@
     }
     
 }
-
 -(void)updateFps:(NSInteger) fps{
     //获取当前capture设备
     NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
@@ -234,23 +205,33 @@
         }
     }
 }
-
 /**设置预览层**/
 - (void)setupPreviewLayer{
     self.preLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.captureSession];
     self.preLayer.frame =  CGRectMake(0, 0, self.prelayerSize.width, self.prelayerSize.height);
     //设置满屏
     self.preLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    [self.preView.layer addSublayer:self.preLayer];
+    [self.preview.layer addSublayer:self.preLayer];
 }
 
-#pragma mark-输出代理
--(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
-    if (connection == self.audioConnection) {
-        [_delegate captureSampleBuffer:sampleBuffer type:SystemCaptureTypeAudio];
-    }else if (connection == self.videoConnection) {
-        [_delegate captureSampleBuffer:sampleBuffer type:SystemCaptureTypeVideo];
+#pragma mark-懒加载
+- (AVCaptureSession *)captureSession{
+    if (!_captureSession) {
+        _captureSession = [[AVCaptureSession alloc] init];
     }
+    return _captureSession;
+}
+- (dispatch_queue_t)captureQueue{
+    if (!_captureQueue) {
+        _captureQueue = dispatch_queue_create("TMCapture Queue", NULL);
+    }
+    return _captureQueue;
+}
+- (UIView *)preview{
+    if (!_preview) {
+        _preview = [[UIView alloc] init];
+    }
+    return _preview;
 }
 
 
@@ -277,6 +258,16 @@
     }
     self.captureSession = nil;
 }
+
+#pragma mark-输出代理
+-(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
+    if (connection == self.audioConnection) {
+        [_delegate captureSampleBuffer:sampleBuffer type:SystemCaptureTypeAudio];
+    }else if (connection == self.videoConnection) {
+        [_delegate captureSampleBuffer:sampleBuffer type:SystemCaptureTypeVideo];
+    }
+}
+
 
 
 #pragma mark-授权相关
@@ -333,6 +324,20 @@
     
 }
 
-
+-(int)test{
+    int result = 0;
+    AVAuthorizationStatus videoStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
+    switch (videoStatus) {
+        case AVAuthorizationStatusNotDetermined://第一次
+            break;
+        case AVAuthorizationStatusAuthorized://已授权
+            result = 1;
+            break;
+        default:
+            result = -1;
+            break;
+    }
+    return result;
+}
 
 @end

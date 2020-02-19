@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
@@ -29,18 +28,15 @@ typedef NS_ENUM(int,SystemCaptureType) {
 @interface SystemCapture : NSObject
 
 /**预览层*/
-@property (nonatomic,strong) UIView * preView;
-
-@property (nonatomic,weak) id<SystemCaptureDelegate> delegate;
-
+@property (nonatomic, strong) UIView *preview;
+@property (nonatomic, weak) id<SystemCaptureDelegate> delegate;
 /**捕获视频的宽*/
 @property (nonatomic, assign, readonly) NSUInteger witdh;
 /**捕获视频的高*/
 @property (nonatomic, assign, readonly) NSUInteger height;
 
-//被始方法
 - (instancetype)initWithType:(SystemCaptureType)type;
-- (instancetype)init;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 /** 准备工作(只捕获音频时调用)*/
 - (void)prepare;
@@ -58,7 +54,6 @@ typedef NS_ENUM(int,SystemCaptureType) {
 //授权检测
 + (int)checkMicrophoneAuthor;
 + (int)checkCameraAuthor;
-
 
 @end
 

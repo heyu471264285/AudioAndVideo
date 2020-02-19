@@ -72,9 +72,8 @@
        _capture = [[SystemCapture alloc] initWithType:SystemCaptureTypeVideo];//这是我只捕获了视频
        CGSize size = CGSizeMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
        [_capture prepareWithPreviewSize:size];  //捕获视频时传入预览层大小
-    _capture.preView.frame = CGRectMake(0, 100, size.width, size.height);
-    _capture.preView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:_capture.preView];
+    _capture.preview.frame = CGRectMake(0, 100, size.width, size.height);
+    [self.view addSubview:_capture.preview];
        self.capture.delegate = self;
        
        VideoConfig *config = [VideoConfig defaultConifg];
