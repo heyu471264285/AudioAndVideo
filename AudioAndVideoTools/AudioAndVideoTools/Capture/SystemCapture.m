@@ -97,13 +97,15 @@
 }
 
 #pragma mark - 控制开始/结束/切换摄像头
+//开始捕获
 - (void)start{
     if (!self.isRunning) {
         self.isRunning = YES;
         [self.captureSession startRunning];
     }
 }
-//开始捕获
+
+//结束捕获
 - (void)stop{
     if (self.isRunning) {
         self.isRunning = NO;
@@ -111,7 +113,8 @@
     }
     
 }
-//结束捕获
+
+//切换摄像头
 - (void)changeCamera{
     [self switchCamera];
 }

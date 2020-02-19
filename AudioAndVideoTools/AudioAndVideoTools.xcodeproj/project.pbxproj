@@ -18,6 +18,11 @@
 		042B89B523FBBE78006965F4 /* AVConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B89B423FBBE78006965F4 /* AVConfig.m */; };
 		042B89B823FBBF2B006965F4 /* VideoEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B89B723FBBF2B006965F4 /* VideoEncoder.m */; };
 		042B89BB23FBD682006965F4 /* VideoDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B89BA23FBD682006965F4 /* VideoDecoder.m */; };
+		042B89C023FD4831006965F4 /* AudioEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B89BF23FD4831006965F4 /* AudioEncoder.m */; };
+		042B89C323FD4944006965F4 /* AudioDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B89C223FD4943006965F4 /* AudioDecoder.m */; };
+		042B89C623FD4A22006965F4 /* AudioDataQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B89C523FD4A22006965F4 /* AudioDataQueue.m */; };
+		042B89CB23FD4AD9006965F4 /* AAPLEAGLLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B89CA23FD4AD9006965F4 /* AAPLEAGLLayer.m */; };
+		042B89CE23FD4BA5006965F4 /* AudioPCMPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B89CD23FD4BA5006965F4 /* AudioPCMPlayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +46,16 @@
 		042B89B723FBBF2B006965F4 /* VideoEncoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoEncoder.m; sourceTree = "<group>"; };
 		042B89B923FBD682006965F4 /* VideoDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoDecoder.h; sourceTree = "<group>"; };
 		042B89BA23FBD682006965F4 /* VideoDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoDecoder.m; sourceTree = "<group>"; };
+		042B89BE23FD4831006965F4 /* AudioEncoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioEncoder.h; sourceTree = "<group>"; };
+		042B89BF23FD4831006965F4 /* AudioEncoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioEncoder.m; sourceTree = "<group>"; };
+		042B89C123FD4943006965F4 /* AudioDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioDecoder.h; sourceTree = "<group>"; };
+		042B89C223FD4943006965F4 /* AudioDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioDecoder.m; sourceTree = "<group>"; };
+		042B89C423FD4A22006965F4 /* AudioDataQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioDataQueue.h; sourceTree = "<group>"; };
+		042B89C523FD4A22006965F4 /* AudioDataQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioDataQueue.m; sourceTree = "<group>"; };
+		042B89C923FD4AD9006965F4 /* AAPLEAGLLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAPLEAGLLayer.h; sourceTree = "<group>"; };
+		042B89CA23FD4AD9006965F4 /* AAPLEAGLLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AAPLEAGLLayer.m; sourceTree = "<group>"; };
+		042B89CC23FD4BA5006965F4 /* AudioPCMPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioPCMPlayer.h; sourceTree = "<group>"; };
+		042B89CD23FD4BA5006965F4 /* AudioPCMPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioPCMPlayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +88,7 @@
 		042B898E23FBB1F2006965F4 /* AudioAndVideoTools */ = {
 			isa = PBXGroup;
 			children = (
+				042B89C723FD4A99006965F4 /* AVPlayer */,
 				042B89AF23FBBDA1006965F4 /* AVCoder */,
 				042B89A823FBB340006965F4 /* Capture */,
 				042B898F23FBB1F2006965F4 /* AppDelegate.h */,
@@ -102,14 +118,63 @@
 		042B89AF23FBBDA1006965F4 /* AVCoder */ = {
 			isa = PBXGroup;
 			children = (
+				042B89BD23FD47FD006965F4 /* AudioEncoder */,
+				042B89BC23FD47E4006965F4 /* VideoEncoder */,
 				042B89B323FBBE78006965F4 /* AVConfig.h */,
 				042B89B423FBBE78006965F4 /* AVConfig.m */,
+			);
+			path = AVCoder;
+			sourceTree = "<group>";
+		};
+		042B89BC23FD47E4006965F4 /* VideoEncoder */ = {
+			isa = PBXGroup;
+			children = (
 				042B89B623FBBF2B006965F4 /* VideoEncoder.h */,
 				042B89B723FBBF2B006965F4 /* VideoEncoder.m */,
 				042B89B923FBD682006965F4 /* VideoDecoder.h */,
 				042B89BA23FBD682006965F4 /* VideoDecoder.m */,
 			);
-			path = AVCoder;
+			path = VideoEncoder;
+			sourceTree = "<group>";
+		};
+		042B89BD23FD47FD006965F4 /* AudioEncoder */ = {
+			isa = PBXGroup;
+			children = (
+				042B89BE23FD4831006965F4 /* AudioEncoder.h */,
+				042B89BF23FD4831006965F4 /* AudioEncoder.m */,
+				042B89C123FD4943006965F4 /* AudioDecoder.h */,
+				042B89C223FD4943006965F4 /* AudioDecoder.m */,
+				042B89C423FD4A22006965F4 /* AudioDataQueue.h */,
+				042B89C523FD4A22006965F4 /* AudioDataQueue.m */,
+			);
+			path = AudioEncoder;
+			sourceTree = "<group>";
+		};
+		042B89C723FD4A99006965F4 /* AVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				042B89CF23FD4BBE006965F4 /* AudioPlayer */,
+				042B89C823FD4AA8006965F4 /* VideoPlayer */,
+			);
+			path = AVPlayer;
+			sourceTree = "<group>";
+		};
+		042B89C823FD4AA8006965F4 /* VideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				042B89C923FD4AD9006965F4 /* AAPLEAGLLayer.h */,
+				042B89CA23FD4AD9006965F4 /* AAPLEAGLLayer.m */,
+			);
+			path = VideoPlayer;
+			sourceTree = "<group>";
+		};
+		042B89CF23FD4BBE006965F4 /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				042B89CC23FD4BA5006965F4 /* AudioPCMPlayer.h */,
+				042B89CD23FD4BA5006965F4 /* AudioPCMPlayer.m */,
+			);
+			path = AudioPlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,10 +250,15 @@
 				042B89B523FBBE78006965F4 /* AVConfig.m in Sources */,
 				042B899723FBB1F2006965F4 /* ViewController.m in Sources */,
 				042B899123FBB1F2006965F4 /* AppDelegate.m in Sources */,
+				042B89C323FD4944006965F4 /* AudioDecoder.m in Sources */,
 				042B89AB23FBB367006965F4 /* CaptureManager.m in Sources */,
 				042B89A223FBB1F6006965F4 /* main.m in Sources */,
+				042B89CB23FD4AD9006965F4 /* AAPLEAGLLayer.m in Sources */,
 				042B89B823FBBF2B006965F4 /* VideoEncoder.m in Sources */,
+				042B89C023FD4831006965F4 /* AudioEncoder.m in Sources */,
 				042B89BB23FBD682006965F4 /* VideoDecoder.m in Sources */,
+				042B89CE23FD4BA5006965F4 /* AudioPCMPlayer.m in Sources */,
+				042B89C623FD4A22006965F4 /* AudioDataQueue.m in Sources */,
 				042B89AE23FBB3DD006965F4 /* SystemCapture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
